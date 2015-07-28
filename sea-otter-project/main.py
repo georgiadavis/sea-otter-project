@@ -9,7 +9,8 @@ class MainHandler(webapp2.RequestHandler):
     def get(self):
         template = env.get_template('main.html')
         self.response.write(template.render())
-    #twilio API acount token 
+
+    # Twilio API account token.
     def post(self):
         account_sid = "ACb332643db3e9450c8831d380bd722a3c"
         auth_token  = "3b80f0c5f9fc9ec030afe69149de8e49"
@@ -30,6 +31,14 @@ class MainHandler(webapp2.RequestHandler):
         template_variables= {'sender':sender,'textmessage':textmessage}
         self.response.write(results.render(template_variables))
 
+
+class ProfileHandler(webapp2.RequestHandler):
+    def get(self):
+        self.response.write('This is your profile!')
+
+
 app = webapp2.WSGIApplication([
-    ('/', MainHandler)
+    ('/', MainHandler),
+    ('/profile', ProfileHandler)
 ], debug=True)
+
