@@ -31,7 +31,7 @@ class MainHandler(webapp2.RequestHandler):
         template_variables= {'sender':sender,'textmessage':textmessage}
         self.response.write(results.render(template_variables))
 
-
+#ProfileHandler that Matthew added. 
 class ProfileHandler(webapp2.RequestHandler):
     def get(self):
         self.response.write('This is your profile!')
@@ -41,4 +41,3 @@ app = webapp2.WSGIApplication([
     ('/', MainHandler),
     ('/profile', ProfileHandler)
 ], debug=True)
-
